@@ -10,12 +10,12 @@ const AppLayout = ()=> (WrappedComponent) => {
                 <Title/>
                 <Header/>
                 
-                <Grid container  height={"calc(100vh - 4rem)"}>
-                <Grid  sm={4} md={3} sx={{
+                <Grid item container  height={"calc(100vh - 4rem)"}>
+                <Grid  item sm={4} md={3} sx={{
                     display: { xs: 'none', sm: 'block' },
                     
                 }} height={"100%"} >First</Grid>
-                <Grid  xs={12} sm={8} md={5} lg={6} height={"100%"}>
+                <Grid item  xs={12} sm={8} md={5} lg={6} height={"100%"}>
                 <WrappedComponent {...props} />
                     
                 </Grid>
