@@ -5,6 +5,7 @@ import { Grid, Grid2 } from '@mui/material'
 import ChatList from '../specific/ChatList'
 import { sampleChats } from '../../constants/sampleData'
 import { useParams } from 'react-router-dom'
+import Profile from '../specific/Profile'
 
 const AppLayout = () => (WrappedComponent) => {
     const handleDeleteChat = (e,_id,groupChat) => {
@@ -47,7 +48,10 @@ const AppLayout = () => (WrappedComponent) => {
                         padding: "2rem",
                         bgcolor: "rgba(0,0,0,0.8)"
 
-                    }} height={"100%"}  >Third</Grid>
+                    }} height={"100%"}  >
+                        
+                        <Profile/>
+                    </Grid>
 
                 </Grid>
 
