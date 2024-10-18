@@ -5,16 +5,24 @@ import { grayColor, orange } from '../constants/color'
 import { AttachFile as AttachFileIcon, Send as SendIcon } from '@mui/icons-material'
 import { InputBox } from '../components/styles/StyledComponents'
 import FileMenu from '../components/dialogs/FileMenu'
+import { sampleMessages } from '../constants/sampleData'
+import MessageComponent from '../components/shared/MessageComponent'
+
+const user = {
+  _id: '1',
+  name: 'Random User',
+}
+
 const Chat = () => {
   const containerRef = useRef(null)
-  const fileMenuRef = useRef(null)
+  // const fileMenuRef = useRef(null)
   return (
     <>
       <Stack ref={containerRef} 
       boxSizing={'border-box'}
       padding={'1rem'}
       spacing={'1rem'}
-      bgcolor={grayColor}
+      bgcolor={'#ffe0b25e'}
       height={'90%'}
       sx={{
         overflowX: 'hidden',
@@ -22,6 +30,11 @@ const Chat = () => {
       }}
       >
         {/* Messages Render */}
+        {
+          sampleMessages.map((message,i)=>(
+            <MessageComponent key={i} message={message} user={user} />
+          ))
+        }
       </Stack>
       <form  style={{
         height: '10%',
@@ -33,6 +46,7 @@ const Chat = () => {
         padding={'1rem'}
         alignItems={'center'}
         position={'relative'}
+        bgcolor={'#ffe0b25e'}
         >
           <IconButton
           sx={{
@@ -40,7 +54,7 @@ const Chat = () => {
             left: '1.5rem',
             rotate: '30deg'
           }}
-          ref={fileMenuRef}
+          // ref={fileMenuRef}
           >
             <AttachFileIcon />
           </IconButton>
@@ -66,7 +80,7 @@ const Chat = () => {
         </Stack>
 
       </form>
-      <FileMenu />
+      <FileMenu anchorEl={null} />
     </>
   )
 }
