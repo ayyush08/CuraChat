@@ -51,7 +51,7 @@ export const sampleNotifications = [
 
 export const sampleMessages = [
     {
-        attachment: [
+        attachments: [
             {
                 public_id: "sample",
                 url: "https://www.w3schools.com/howto/img_avatar.png"
@@ -67,7 +67,7 @@ export const sampleMessages = [
         createdAt: "2021-10-10T10:10:10.000Z",
     },
     {
-        attachment: [
+        attachments: [
             {
                 public_id: "sample 2",
                 url: "https://www.w3schools.com/howto/img_avatar.png"
