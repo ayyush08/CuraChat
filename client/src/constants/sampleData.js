@@ -52,10 +52,10 @@ export const sampleNotifications = [
 export const sampleMessages = [
     {
         attachments: [
-            {
-                public_id: "sample",
-                url: "https://www.w3schools.com/howto/img_avatar.png"
-            }
+            // {
+            //     public_id: "sample",
+            //     url: "https://www.w3schools.com/howto/img_avatar.png"
+            // }
         ],
         content:"Something here",
         _id: "adakndknfkanfk",
@@ -73,13 +73,13 @@ export const sampleMessages = [
                 url: "https://www.w3schools.com/howto/img_avatar.png"
             }
         ],
-        content:"Something here 2",
+        // content:"Something here 2",
         _id: "1",
         sender:{
             _id: "1",
             name: "John Doe",
         },
         chat: "chat._id",
-        createdAt: "2021-10-10T10:10:10.000Z",
+        createdAt: "2024-10-26 10:10:10.000Z",
     }
 ]
