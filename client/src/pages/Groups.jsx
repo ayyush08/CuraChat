@@ -1,19 +1,47 @@
-import { Grid, IconButton, Tooltip } from "@mui/material";
-import React from "react";
+import { Box, Drawer, Grid, IconButton, Stack, Tooltip, Typography } from "@mui/material";
+import React, { memo, useState } from "react";
 import { lightOrange, matteBlack, orange } from "../constants/color";
-import { KeyboardBackspace as KeyboardBackspaceIcon } from "@mui/icons-material";
-import {useNavigate} from 'react-router-dom'
+import { KeyboardBackspace as KeyboardBackspaceIcon,Menu as MenuIcon } from "@mui/icons-material";
+import {useNavigate,useSearchParams} from 'react-router-dom'
+import { Link } from "../components/styles/StyledComponents";
+import AvatarCard from "../components/shared/AvatarCard";
+import {sampleChats} from '../constants/sampleData'
 const Groups = () => {
-
+  const chatId =  useSearchParams()[0].get('group');
+  console.log(chatId);
+  
     const navigate = useNavigate()
+
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navigateBack = () => {
     navigate('/');
   }
-
+  const handleMobile = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+  }
+  const handleMobileClose = () => setIsMobileMenuOpen(false);
   const IconBtns = 
+    (
     <>
-      <Tooltip title="back">
+    <Box
+    sx={{
+      display:{
+        xs: 'block',
+        sm: 'none',
+        position:'fixed',
+        right: '1rem',
+        top: '1rem',
+      }
+    }}
+    >
+
+    <IconButton onClick={handleMobile}
+    >
+      <MenuIcon />
+    </IconButton>
+      </Box>
+      <Tooltip title="Go Back">
         <IconButton
         sx={{
           position: "absolute",
@@ -30,7 +58,7 @@ const Groups = () => {
           <KeyboardBackspaceIcon />
         </IconButton>
       </Tooltip>
-    </>
+    </>)
   ;
 
   return (
@@ -46,7 +74,7 @@ const Groups = () => {
         sm={4}
         bgcolor={lightOrange}
       >
-        Group List
+        <GroupList myGroups={sampleChats} chatId={chatId} />
       </Grid>
       <Grid
         item
@@ -62,8 +90,53 @@ const Groups = () => {
       >
         {IconBtns}
       </Grid>
+      <Drawer
+      sx={{
+        display:{
+          xs: 'block',
+          sm: 'none'
+        }
+      }}
+      open={isMobileMenuOpen} onClose={handleMobileClose} >
+        <GroupList w={'50vw'} myGroups={sampleChats} chatId={chatId} />
+      </Drawer>
     </Grid>
   );
 };
+
+
+const GroupList = ({w='100%', myGroups=[],chatId }) => (
+  <Stack width={w}>
+    {
+      myGroups.length > 0 ? (
+        myGroups.map((group)=><GroupListItem key={group._id} group={group} chatId={chatId}/>)
+      ) : ( 
+        <Typography> No groups</Typography>
+      )
+    }
+  </Stack>
+);
+
+
+
+const GroupListItem = memo(({group,chatId}) => {
+  const {
+    name,
+    _id,
+    avatar
+  } = group;
+
+  return <Link to={`?group=${_id}`} onClick={e=>
+  {
+    if(chatId===_id){
+      e.preventDefault();
+  }}}>
+  <Stack
+   direction={'row'} spacing={'1rem'} alignItems={'center'} >
+    <AvatarCard avatar={avatar} />
+    <Typography>{name}</Typography>
+  </Stack>
+  </Link>
+});
 
 export default Groups;
