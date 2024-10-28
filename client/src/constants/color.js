@@ -4,3 +4,5 @@ export const grayColor = "#f5f5f5"
 export const matteBlack = '#1c1c1c'
 
 export const lightBlue = '#2694ab'
+
+export const orangeGradient = 'linear-gradient(#47474600, #e86f04bd)'

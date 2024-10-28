@@ -1,16 +1,17 @@
 import { Backdrop, Box, Button, Drawer, Grid, IconButton, Stack, TextField, Tooltip, Typography } from "@mui/material";
 import React, { lazy, memo, Suspense, useEffect, useState } from "react";
-import { lightOrange, matteBlack, orange } from "../constants/color";
+import { lightOrange, matteBlack, orange, orangeGradient } from "../constants/color";
 import { Add as AddIcon, Delete as DeleteIcon, Done as DoneIcon, Edit as EditIcon, KeyboardBackspace as KeyboardBackspaceIcon, Menu as MenuIcon } from "@mui/icons-material";
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { Link } from "../components/styles/StyledComponents";
 import AvatarCard from "../components/shared/AvatarCard";
-import { sampleChats } from '../constants/sampleData'
+import { sampleChats, sampleUsers } from '../constants/sampleData'
+import UserItem from "../components/shared/UserItem";
 
 const ConfirmDeleteDialog  = lazy(()=> import('../components/dialogs/ConfirmDeleteDialog'))
 const AddMemberDialog = lazy(()=> import('../components/dialogs/AddMemberDialog'))
 
-const isAddMember = true;
+const isAddMember = false;
 
 const Groups = () => {
   const chatId = useSearchParams()[0].get('group');
@@ -47,8 +48,17 @@ const closeConfirmDeleteHandler = () => {
   setConfirmDeleteDialog(false);
 }
 const openAddMemberHandler = () => {}
-const deleteHandler = () => {}
+const deleteHandler = () => {
+  console.log('Delete');
+  closeConfirmDeleteHandler();
+}
+
+const removeMemberHandler = (id) => {
+  console.log('Remove',id);
+}
+
   useEffect(() => {
+    if(!chatId) return;
     setGroupName(`Group Name : ${chatId}`);
     setGroupNameUpdatedValue(`Group Name : ${chatId}`);
 
@@ -152,10 +162,10 @@ const deleteHandler = () => {}
           display: {
             xs: "none",
             sm: "block"
-          }
+          },
+          backgroundImage: 'linear-gradient(#ff9f5845, #e86f04bd)',
         }}
         sm={4}
-        bgcolor={lightOrange}
       >
         <GroupList myGroups={sampleChats} chatId={chatId} />
       </Grid>
@@ -192,12 +202,24 @@ const deleteHandler = () => {}
                 md: '1rem 4rem',
               }}
               spacing={'2rem'}
-              bgcolor={lightOrange}
+              // bgcolor={lightOrange}
               height={'50vh'}
               overflow={'auto'}
             >
               {/* Members */}
-
+              {
+                sampleUsers.map((i)=>(
+                  <UserItem user={i} isAdded 
+                  key={i._id}
+                  styling={{
+                    boxShadow: '0 0 0.5rem rgba(0,0,0,0.2)',
+                    padding: '1rem 2rem',
+                    borderRadius: '1rem',
+                  }}
+                  handler={removeMemberHandler}
+                  />
+                ))
+              }
             </Stack>
 
             {
