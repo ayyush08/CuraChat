@@ -163,7 +163,6 @@ const removeMemberHandler = (id) => {
             xs: "none",
             sm: "block"
           },
-          backgroundImage: 'linear-gradient(#ff9f5845, #e86f04bd)',
         }}
         sm={4}
       >
@@ -249,7 +248,8 @@ const removeMemberHandler = (id) => {
           display: {
             xs: 'block',
             sm: 'none'
-          }
+          },
+          
         }}
         open={isMobileMenuOpen} onClose={handleMobileClose} >
         <GroupList w={'50vw'} myGroups={sampleChats} chatId={chatId} />
@@ -260,12 +260,16 @@ const removeMemberHandler = (id) => {
 
 
 const GroupList = ({ w = '100%', myGroups = [], chatId }) => (
-  <Stack width={w}>
+  <Stack width={w} sx={{
+    backgroundImage: 'linear-gradient(#ff9f5845, #e86f04bd)',
+    height: '100vh',
+    overflow: 'auto',
+  }} >
     {
       myGroups.length > 0 ? (
         myGroups.map((group) => <GroupListItem key={group._id} group={group} chatId={chatId} />)
       ) : (
-        <Typography> No groups</Typography>
+        <Typography textAlign={'center'} padding={'1rem'} > No groups</Typography>
       )
     }
   </Stack>
@@ -286,7 +290,7 @@ const GroupListItem = memo(({ group, chatId }) => {
     }
   }}>
     <Stack
-      direction={'row'} spacing={'1rem'} alignItems={'center'} >
+      direction={'row'} padding={'0.5rem'} spacing={'1rem'} alignItems={'center'} >
       <AvatarCard avatar={avatar} />
       <Typography>{name}</Typography>
     </Stack>

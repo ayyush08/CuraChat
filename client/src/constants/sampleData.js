@@ -13,7 +13,159 @@ export const sampleChats = [
         _id: "2",
         groupChat: true,
         members: ["1", "2"],
-    }
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 3",
+        _id: "3",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 4",
+        _id: "4",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 5",
+        _id: "5",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 6",
+        _id: "6",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 7",
+        _id: "7",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 8",
+        _id: "8",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 9",
+        _id: "9",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 10",
+        _id: "10",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 11",
+        _id: "11",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 12",
+        _id: "12",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 13",
+        _id: "13",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 14",
+        _id: "14",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 15",
+        _id: "15",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 16",
+        _id: "16",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 17",
+        _id: "17",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 18",
+        _id: "18",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 19",
+        _id: "19",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 20",
+        _id: "20",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://www.w3schools.com/howto/img_avatar.png"]
+        ,
+        name: "John Doe 21",
+        _id: "21",
+        groupChat: true,
+        members: ["1", "2"],
+    },
 ]
 
 
@@ -27,7 +179,7 @@ export const sampleUsers = [
         avatar: ["https://www.w3schools.com/howto/img_avatar.png"],
         name: "John Doe 2",
         _id: "2",
-    }
+    },
 ]
 
 export const sampleNotifications = [
@@ -81,5 +233,5 @@ export const sampleMessages = [
         },
         chat: "chat._id",
         createdAt: "2024-10-26 10:10:10.000Z",
-    }
+    },
 ]
