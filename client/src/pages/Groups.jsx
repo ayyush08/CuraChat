@@ -8,6 +8,10 @@ import AvatarCard from "../components/shared/AvatarCard";
 import { sampleChats } from '../constants/sampleData'
 
 const ConfirmDeleteDialog  = lazy(()=> import('../components/dialogs/ConfirmDeleteDialog'))
+const AddMemberDialog = lazy(()=> import('../components/dialogs/AddMemberDialog'))
+
+const isAddMember = true;
+
 const Groups = () => {
   const chatId = useSearchParams()[0].get('group');
   console.log(chatId);
@@ -202,6 +206,14 @@ const deleteHandler = () => {}
           </>
         }
       </Grid>
+
+        {
+          isAddMember && <Suspense fallback={<Backdrop open/>}>
+            <AddMemberDialog/>
+          </Suspense>
+            
+        }
+
 
         {
           confirmDeleteDialog && <Suspense fallback={<Backdrop open/>}>
