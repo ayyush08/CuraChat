@@ -8,6 +8,9 @@ const Home = lazy(() => import('./pages/Home'))
 const Login = lazy(() => import('./pages/Login'))
 const Chat = lazy(() => import('./pages/Chat'))
 const Groups = lazy(() => import('./pages/Groups'))
+
+const AdminLogin = lazy(()=>import('./pages/admin/AdminLogin'))
+
 const NotFound = lazy(() => import('./pages/NotFound'))
 const App = () => {
   return <BrowserRouter>
@@ -25,7 +28,7 @@ const App = () => {
 
 
 
-
+    <Route path="/admin" element={<AdminLogin/>} />
 
     <Route path='*' element={<NotFound/>} />
     </Routes>
