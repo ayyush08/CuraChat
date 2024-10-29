@@ -16,7 +16,13 @@ const ChatList = ({
 }) => {
     
     return (   
-        <Stack width={w} direction={'column'} >
+        <Stack width={w} direction={'column'}
+            overflow={'auto'}
+            height={'100%'}
+            sx={{
+                backgroundImage: 'linear-gradient(#ff9f5845, #e86f04bd)',
+            }}
+        >
 
             {
                 chats?.map((data,index) => {
