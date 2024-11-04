@@ -1,7 +1,7 @@
 import { Close as CloseIcon, Dashboard as DashboardIcon, ExitToApp as ExitToAppIcon, Groups as GroupsIcon, ManageAccounts as ManageAccountsIcon, Menu as MenuIcon, Message as MessageIcon } from '@mui/icons-material'
 import { Box, Drawer, Grid, IconButton, Stack, styled, Typography } from '@mui/material'
 import React, { useState } from 'react'
-import { Link as LinkComponent, useLocation } from 'react-router-dom'
+import { Link as LinkComponent, Navigate, useLocation } from 'react-router-dom'
 import { grayColor, orange } from '../../constants/color'
 
 const Link = styled(LinkComponent)`
@@ -25,12 +25,12 @@ export const adminTabs = [
     },
     {
         name: 'Users',
-        path: '/admin/user-management',
+        path: '/admin/users',
         icon: <ManageAccountsIcon/>
     },
     {
         name: 'Chats',
-        path: '/admin/chats-management',
+        path: '/admin/chats',
         icon: <GroupsIcon/>
     },
     {
@@ -89,7 +89,7 @@ const Siderbar = ({ w = '100%' }) => {
     )
 }
 
-
+const isAdmin = true
 
 const AdminLayout = ({ children }) => {
     const [isMobile, setIsMobile] = useState(false)
@@ -100,6 +100,10 @@ const AdminLayout = ({ children }) => {
 
     const handleClose = () => {
         setIsMobile(false)
+    }
+
+    if(!isAdmin){
+        return <Navigate to='/admin'/>
     }
 
     return (
