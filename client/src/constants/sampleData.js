@@ -252,5 +252,54 @@ export const dashboardData = {
         username: "John Doe 2",
         friends: 50,
         groups: 25,
-    }]
+    }],
+
+    chats: [
+        {   
+            name: "Johnnaaa",
+            avatar:[ "https://www.w3schools.com/howto/img_avatar.png"], 
+            _id: "1",
+            groupChat: false,
+            members: [
+                {
+                    _id: "1",
+                    avatar: "https://www.w3schools.com/howto/img_avatar.png",
+                },
+                {
+                    _id: "2",
+                    avatar: "https://www.w3schools.com/howto/img_avatar.png",
+                }
+            ],
+            totalMessages: 10,
+            totalMembers: 2,
+            creator:{
+                name: "John ad aa",
+                avatar: "https://www.w3schools.com/howto/img_avatar.png"
+            },
+        },
+        {
+            name: "John Doe 2",
+            avatar: ["https://www.w3schools.com/howto/img_avatar.png"],
+            _id: "2",
+            groupChat: true,
+            members: [
+                {
+                    _id: "1",
+                    avatar: "https://www.w3schools.com/howto/img_avatar.png",
+                },
+                {
+                    _id: "2",
+                    avatar: "https://www.w3schools.com/howto/img_avatar.png",
+                }
+            ],
+            totalMessages: 23,
+            totalMembers: 24,
+            creator:{
+                name: "John knda",
+                avatar: "https://www.w3schools.com/howto/img_avatar.png"
+            },
+        }
+    ]
 }
+
+
