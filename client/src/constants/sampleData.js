@@ -299,6 +299,38 @@ export const dashboardData = {
                 avatar: "https://www.w3schools.com/howto/img_avatar.png"
             },
         }
+    ],
+    messages:[
+        {
+            attachments: [],
+            content:"Something here",
+
+            _id: "adakndknfkanfk",
+            sender:{
+                avatar: "https://www.w3schools.com/howto/img_avatar.png",
+                name: "John Doe",
+            },
+            chat: "chat._id",
+            groupChat: false,
+            createdAt: "2021-10-10T10:10:10.000Z",
+        },
+        {
+            attachments: [
+                {
+                    public_id: "sample 2",
+                    url: "https://www.w3schools.com/howto/img_avatar.png"
+                }
+            ],
+            content:"Something here 2",
+            _id: "1",
+            sender:{
+                avatar: "https://www.w3schools.com/howto/img_avatar.png",
+                name: "John Doe",
+            },
+            groupChat: true,
+            chat: "chat._id",
+            createdAt: "2024-10-26 10:10:10.000Z",
+        }
     ]
 }
 

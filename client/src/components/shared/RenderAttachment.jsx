@@ -8,6 +8,7 @@ const RenderAttachment = ( {file, url} ) => {
       return <video src={url} preload="none" width={"200px"} controls />;
       break;
     case "image":
+      
       return( <img
         src={transformImage(url, 200)}
         alt="Attachment"
