@@ -1,4 +1,4 @@
-import mongoose, { models, Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 
 
@@ -34,4 +34,4 @@ const messageSchema = new Schema({
 })
 
 
-export const Message = models.Message || mongoose.model('Message', messageSchema)
+export const Message =  mongoose.model('Message', messageSchema)
