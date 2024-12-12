@@ -9,6 +9,8 @@ router.post('/register',
     , registerUser);
 
 router.post('/login', login);
-router.get('/me', getMyProfile);
 
+
+// After here user must be authenticated to access the routes
+router.get('/me', getMyProfile);
 export default router
