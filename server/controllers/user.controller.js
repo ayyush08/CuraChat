@@ -1,5 +1,7 @@
+import { TryCatch } from "../middlewares/error.middleware.js";
 import { User } from "../models/user.model.js";
 import { sendToken } from "../utils/features.js";
+import { ErrorHandler } from "../utils/utility.js";
 
 const dummyUser = {
     name: 'John Doe',
@@ -26,27 +28,22 @@ const registerUser = async (req, res) => {
     sendToken(res, user, 201, 'User created successfully')
 }
 
-const login = async (req, res,next) => {
-    try {
-        const { username, password } = req.body;
-        const user = await User.findOne({ username }).select('+password')
-    
-        if (!user) {
-            return next(new Error("Invalid Username"))
-        }
-    
-        const isPasswordMatch = await user.isPasswordCorrect(password)
-        if(!isPasswordMatch){
-            return next(new Error("Invalid Password"))
-        }
-        const loggedInUser = await User.findById(user._id)
-        sendToken(res, loggedInUser, 200, `Welcome back ${user.name}`)
+const login = TryCatch(async (req, res,next) => {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username }).select('+password')
+
+    if (!user) {
+        return next(new ErrorHandler("Invalid Username",404))
     }
-    catch (error) {
-        next(error)
-        
+
+    const isPasswordMatch = await user.isPasswordCorrect(password)
+    if(!isPasswordMatch){
+        return next(new ErrorHandler("Invalid Password",401))
     }
-}
+    const loggedInUser = await User.findById(user._id)
+    sendToken(res, loggedInUser, 200, `Welcome back ${user.name}`)
+})
+
 const getMyProfile = async (req, res) => {
 
 }
