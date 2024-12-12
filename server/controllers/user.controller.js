@@ -26,27 +26,27 @@ const registerUser = async (req, res) => {
     sendToken(res, user, 201, 'User created successfully')
 }
 
-const login = async (req, res) => {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username }).select('+password')
-
-    if (!user) {
-        return res.status(404).json({
-            success: false,
-            message: "User not found"})
+const login = async (req, res,next) => {
+    try {
+        const { username, password } = req.body;
+        const user = await User.findOne({ username }).select('+password')
+    
+        if (!user) {
+            return next(new Error("Invalid Username"))
+        }
+    
+        const isPasswordMatch = await user.isPasswordCorrect(password)
+        if(!isPasswordMatch){
+            return next(new Error("Invalid Password"))
+        }
+        const loggedInUser = await User.findById(user._id)
+        sendToken(res, loggedInUser, 200, `Welcome back ${user.name}`)
     }
-
-    const isPasswordMatch = await user.isPasswordCorrect(password)
-    if(!isPasswordMatch){
-        return res.status(401).json({
-            success:false,
-            message:"Invalid credentials"
-        })
+    catch (error) {
+        next(error)
+        
     }
-    const loggedInUser = await User.findById(user._id)
-    sendToken(res, loggedInUser, 200, `Welcome back ${user.name}`)
 }
-
 const getMyProfile = async (req, res) => {
 
 }
