@@ -14,7 +14,7 @@ const connectDB = async () => {
 
 
 const sendToken = (res,user,code,message)=>{
-    console.log("sendToken")
+    console
     const token = jwt.sign({
         id:user._id,   
     },
