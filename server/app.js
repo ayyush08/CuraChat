@@ -15,8 +15,13 @@ app.get('/',(req,res)=>{
 
 
 import userRouter from './routes/user.route.js';
+import { errorMiddleware } from './middlewares/error.middleware.js';
 
 app.use('/user',userRouter);
 
+
+
+
+app.use(errorMiddleware)
 
 export { app }
