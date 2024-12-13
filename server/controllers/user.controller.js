@@ -57,8 +57,22 @@ const getMyProfile = TryCatch(async (req, res) => {
 })
 
 
+const logout = TryCatch(async (req, res) => {
+    const cookieOptions = {
+        maxAge: 0,
+        sameSite: "none",
+        secure: true,
+        httpOnly: true
+    }
+    return res.status(200).cookie('curachat-token',"",cookieOptions).json({
+        success:true,
+        message:"Logged out successfully"
+    })
+})
+
 export {
     registerUser,
     login,
-    getMyProfile
+    getMyProfile,
+    logout
 }
