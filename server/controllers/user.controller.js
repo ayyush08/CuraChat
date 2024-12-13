@@ -70,9 +70,23 @@ const logout = TryCatch(async (req, res) => {
     })
 })
 
+
+const searchUser = TryCatch(async (req, res) => {
+    const { name } = req.query;
+    //search 
+
+    return res.status(200).json({
+        success: true,
+        data: name
+    })
+
+
+})
+
 export {
     registerUser,
     login,
     getMyProfile,
-    logout
+    logout,
+    searchUser
 }

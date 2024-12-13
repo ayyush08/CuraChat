@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { registerUser,login,getMyProfile, logout } from "../controllers/user.controller.js";
+import { registerUser,login,getMyProfile, logout, searchUser } from "../controllers/user.controller.js";
 import { multerUpload } from "../middlewares/multer.middlerware.js";
 import { isAuthenticated } from "../middlewares/auth.middleware.js";
 
@@ -16,4 +16,5 @@ router.use(isAuthenticated)
 // After here user must be authenticated to access the routes
 router.get('/me', getMyProfile);
 router.get('/logout',logout)
+router.get('/search',searchUser)
 export default router
