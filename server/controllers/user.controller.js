@@ -5,7 +5,7 @@ import { ErrorHandler } from "../utils/utility.js";
 
 const dummyUser = {
     name: 'John Doe',
-    username: 'johndoe',
+    username: 'johndoe2',
     password: '12345678',
     bio: 'I am a dummy user',
     avatar: {
@@ -14,13 +14,14 @@ const dummyUser = {
     }
 }
 const registerUser = async (req, res) => {
-    const { name, username, password, bio } = req.body;
+    const { name, username, password, bio,avatar } = req.body;
 
 
     const user = await User.create({
         name,
         username,
         password,
+        avatar,
         bio,
     })
 
@@ -42,6 +43,7 @@ const login = TryCatch(async (req, res,next) => {
     }
     const loggedInUser = await User.findById(user._id)
     sendToken(res, loggedInUser, 200, `Welcome back ${user.name}`)
+
 })
 
 const getMyProfile = TryCatch(async (req, res) => {
@@ -49,7 +51,7 @@ const getMyProfile = TryCatch(async (req, res) => {
     if(!user){
         return next(new ErrorHandler('User not found',404))
     }
-    res.status(200).json({
+    return res.status(200).json({
         success: true,
         user
     })

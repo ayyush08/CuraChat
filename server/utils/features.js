@@ -35,8 +35,14 @@ process.env.JWT_SECRET)
 
 
 
+const emitEvent = (req,event,users,data)=>{
+    console.log('emitting event');
+    
+}
 
 
-export {sendToken}
+
+
+export {sendToken,emitEvent}
 
 export default connectDB

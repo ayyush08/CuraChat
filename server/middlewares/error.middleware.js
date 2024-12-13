@@ -10,9 +10,12 @@ const errorMiddleware = (error, req, res, next) => {
 
 
 const TryCatch = (received)=> async (req,res,next)=>{
+    
     try{
         await received(req,res,next)
-    }catch{
+    }catch(error){
+        console.log('error');
+        
         next(error)
     }
 }

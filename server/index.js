@@ -11,11 +11,12 @@ connectDB()
     app.on("error",(error)=>{
         console.log("ERRR:",error);
     })
-    app.listen(process.env.PORT || 8000,()=>{
+    app.listen(process.env.PORT || 5000,()=>{
         console.log(`Server listening on port ${process.env.PORT}`)
     })
 })
 .catch((error)=>{
     console.error("MongoDB connection Error: ",error)
+    process.exit(1) 
 })
 
