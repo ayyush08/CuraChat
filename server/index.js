@@ -1,6 +1,7 @@
 import connectDB from './utils/features.js';
 import dotenv from 'dotenv';
 import { app } from './app.js';
+import { createUser } from './seeders/user.seeder.js';
 dotenv.config({
     path:'./.env'
 })
