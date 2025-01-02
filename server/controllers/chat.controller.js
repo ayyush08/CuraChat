@@ -2,6 +2,7 @@ import { ALERT, REFETCH_CHATS } from "../constants/events.js";
 import { TryCatch } from "../middlewares/error.middleware.js";
 import { Chat } from "../models/chat.model.js";
 import { emitEvent } from "../utils/features.js";
+import { getOtherMember } from "../utils/helper.js";
 import { ErrorHandler } from "../utils/utility.js";
 
 
@@ -33,4 +34,40 @@ const newGroupChat = TryCatch(async(req,res,next)=>{
 })
 
 
-export { newGroupChat }
+const getMyChats = TryCatch(async(req,res,next)=>{
+    console.log(req.user);
+    
+    const chats = await Chat.find({members:req.user}).populate(
+        'members',
+        'name username avatar'
+    )
+
+    const transformedChats = chats.map(({_id,name,members,groupChat})=>{
+        const otherMember = getOtherMember(members,req.user)
+        return {
+            _id,
+            groupChat,
+            avatar: groupChat ? members.slice(0,3).map(member=>member.avatar.url) : [otherMember.avatar.url],
+            name: groupChat ? name : otherMember.name,
+            // username: groupChat ? members.map(member=>member.username) : [otherMember.username],
+            members: members.reduce((acc,member)=>{
+                console.log(member._id.toString(),req.user.toString());
+                
+                if(member._id.toString() !== req.user.toString()){
+                    acc.push(member._id)
+                }
+                return acc
+            },[]),
+        }
+    })
+
+    if(!chats){
+        return next(new ErrorHandler('No chats found',404))
+    }
+    return res.status(200).json({
+        success: true,
+        chats: transformedChats
+    })
+})
+
+export { newGroupChat,getMyChats }

@@ -36,7 +36,7 @@ process.env.JWT_SECRET)
 
 
 const emitEvent = (req,event,users,data)=>{
-    console.log('emitting event');
+    console.log('emitting event',event);
     
 }
 
